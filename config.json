@@ -1,0 +1,6 @@
+{
+    "token": "TOKEN_BOT",
+    "slashs": true,
+    "prefix": "!",
+    "owners": ["OWNER_ID"]
+}
