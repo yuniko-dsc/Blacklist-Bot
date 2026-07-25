@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Secrets & local config
+config.json
+.env
+.env.*
+
+# Database
+db.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Misc
+*.tmp
+*.temp
+.cache/

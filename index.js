@@ -4,28 +4,25 @@ const fs = require("fs");
 if (!fs.existsSync('./db.json'))
     fs.writeFileSync('./db.json', '{}', 'utf-8');
 
+const config = require("./config.json");
+
 const client = new Client({
     intents: Object.keys(GatewayIntentBits),
     partials: [ Partials.Channel, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.Message, Partials.Reaction, Partials.ThreadMember, Partials.User ],
     restTimeOffset: 0,
     failIfNotExists: false,
-    presence: {
-        activities: [{
-            name: "Blacklist Bot",
-            type: ActivityType.Streaming,
-            url: "https://www.twitch.tv/002sans"
-        }],
-        status: "online"
-    },
+    presence: config.presence,
     allowedMentions: {
         parse: ["roles", "users", "everyone"],
         repliedUser: false
     }
 });
 
-client.config = require("./config.json");
+
+client.config = config;
 client.db = require('./db.json');
 client.saveDB = () => fs.writeFileSync('./db.json', JSON.stringify(client.db, null, 4));
+client.saveConfig = () => fs.writeFileSync('./config.json', JSON.stringify(client.config, null, 4));
 
 client.login(client.config.token);
 
